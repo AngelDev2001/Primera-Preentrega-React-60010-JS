@@ -1,15 +1,13 @@
+import { BrowserRouter } from "react-router-dom";
 import "./App.css";
-import { ItemListContainer, Header } from "./components";
+import { Router } from "./router";
 
 export const App = () => {
   return (
     <>
-      <Header />
-      <main>
-        <div className="greeting">
-          <ItemListContainer greeting="Bienvenidos a Play Store" />
-        </div>
-      </main>
+      <BrowserRouter>
+        <Router />
+      </BrowserRouter>
     </>
   );
 };

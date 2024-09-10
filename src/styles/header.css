@@ -1,0 +1,149 @@
+header {
+  width: 100%;
+  min-height: 8rem;
+  background-color: #ffffff !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h1 {
+    color: #008ecc;
+  }
+
+  span {
+    color: #666666;
+    font-weight: 500;
+  }
+
+  .wrapper-content {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .icon-bars-staggered {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0.6rem;
+      color: #008ecc;
+      background-color: #f3f9fb;
+      border-radius: 0.5rem;
+      cursor: pointer;
+    }
+
+    .icon-cart-shopping-top {
+      color: #008ecc;
+      cursor: pointer;
+    }
+  }
+
+  .search-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+    .ant-input-affix-wrapper {
+      background-color: #f3f9fb;
+    }
+
+    input {
+      padding: 20rem;
+      margin: 0 0.5rem;
+    }
+
+    .icon-magnifying-glass,
+    .icon-list {
+      color: #008ecc;
+      cursor: pointer;
+    }
+  }
+
+  .icon-cart-shopping {
+    order: 3;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #008ecc;
+    cursor: pointer;
+    display: none;
+  }
+
+  .icon-cart {
+    position: relative;
+    span {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 1rem;
+      height: 1rem;
+      border-radius: 50%;
+      position: absolute;
+      top: -0.8rem;
+      right: -0.8rem;
+      font-size: 0.7rem;
+      background-color: #000;
+      color: #fff;
+    }
+  }
+}
+
+nav {
+  display: none;
+  align-items: center;
+  gap: 1rem;
+  ul {
+    display: flex;
+    list-style: none;
+    gap: 1rem;
+    a {
+      text-decoration: none;
+      color: #000;
+      position: relative;
+      &::after {
+        content: "";
+        width: 0;
+        height: 2px;
+        position: absolute;
+        bottom: -2px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #000;
+        transition: width 0.3s ease-in-out;
+      }
+      &:hover::after {
+        width: 100%;
+      }
+    }
+  }
+}
+
+/* Desktop */
+@media screen and (min-width: 1024px) {
+  header {
+    min-height: auto;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .wrapper-content {
+      width: auto;
+      gap: 1rem;
+
+      .icon-cart-shopping-top {
+        display: none;
+      }
+    }
+
+    .search-container {
+      width: 40%;
+    }
+
+    .icon-cart-shopping {
+      display: flex;
+    }
+  }
+
+  nav {
+    display: flex;
+  }
+}
