@@ -8,7 +8,7 @@ export const Home = () => {
   return (
     <>
       <Categories onSetCategory={setCategory} />
-      <Products />
+      <Products category={category} />
     </>
   );
 };

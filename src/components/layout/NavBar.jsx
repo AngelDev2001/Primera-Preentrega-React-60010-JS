@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { CardWidgget } from "../CartWidget";
 
-export const NavBar = () => {
+export const NavBar = ({ onSetOpenDrawer }) => {
   return (
     <nav>
       <ul>
@@ -15,7 +15,7 @@ export const NavBar = () => {
           <Link to="/contact">Contacto</Link>
         </li>
       </ul>
-      <CardWidgget />
+      <CardWidgget onSetOpenDrawer={onSetOpenDrawer} />
     </nav>
   );
 };

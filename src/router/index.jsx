@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import { BaseLayout } from "../components/layout/BaseLayout";
-import { About, Contact, Home } from "../pages";
+import { About, Contact, Details, Home } from "../pages";
 
 export const Router = () => {
   return (
@@ -26,6 +26,14 @@ export const Router = () => {
         element={
           <BaseLayout>
             <Contact />
+          </BaseLayout>
+        }
+      />
+      <Route
+        path="/products/:productId"
+        element={
+          <BaseLayout>
+            <Details />
           </BaseLayout>
         }
       />

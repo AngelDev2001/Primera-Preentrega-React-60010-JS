@@ -1,15 +1,24 @@
 import styled from "styled-components";
 import { Product } from "./ui/Product";
+import { products } from "../data-list/products";
 
-export const Products = () => {
+export const Products = ({ category }) => {
+  const productsView = products.filter((product) =>
+    product.category === category ? true : category === "all" ? true : null
+  );
+
   return (
     <Container>
       <div className="products-section">
-        <Product />
-        <Product />
-        <Product />
-        <Product />
-        <Product />
+        {productsView.map((product, index) => (
+          <Product
+            key={index}
+            id={product.id}
+            image={product.image}
+            name={product.name}
+            price={product.price}
+          />
+        ))}
       </div>
     </Container>
   );

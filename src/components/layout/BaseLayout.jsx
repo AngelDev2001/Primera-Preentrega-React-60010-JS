@@ -21,6 +21,7 @@ export const BaseLayout = ({ children }) => {
 
 const Container = styled.div`
   .site-layout-background {
+    min-height: 85vh;
     background-color: #fff;
   }
 `;

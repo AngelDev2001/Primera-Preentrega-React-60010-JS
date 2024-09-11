@@ -1,22 +1,32 @@
 import { Button, Divider, Space } from "antd";
-import { Celular1 } from "../../images";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { useProductsCart } from "../../providers/ProductsCart";
 
-export const Product = () => {
+export const Product = ({ id, image, name, price }) => {
+  const navigate = useNavigate();
+  const { onAddProductCart } = useProductsCart();
+
+  const onNavigateProductDetails = () => navigate(`/products/${id}`);
+
   return (
     <Container>
-      <div className="image-container">
-        <img src={Celular1} alt="" />
+      <div className="image-container" onClick={onNavigateProductDetails}>
+        <img src={image} alt="" />
       </div>
       <div className="description">
-        <span className="description__name">Galaxy S22 Ultra</span>
-        <Space>
-          <span className="description__price">S/ 32999</span>
-          <span className="description__price-old">S/ 74999</span>
+        <Space direction="vertical">
+          <span
+            className="description__name"
+            onClick={onNavigateProductDetails}
+          >
+            {name}
+          </span>
+          <span className="description__price">S/ {price}</span>
         </Space>
-        <Divider />
-        <Button type="link" block>
-          Comprar
+        <Divider style={{ margin: "1rem 0" }} />
+        <Button type="link" block onClick={() => onAddProductCart(id)}>
+          Agregar al carrito
         </Button>
       </div>
       <div className="discount">
@@ -28,7 +38,6 @@ export const Product = () => {
 };
 
 const Container = styled.article`
-  background-color: #f5f5f5;
   position: relative;
   border-radius: 1rem;
   border: 1px solid #ededed;
@@ -43,7 +52,12 @@ const Container = styled.article`
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0.8rem;
+    padding: 1.1rem;
+    cursor: pointer;
+
+    img {
+      width: 100%;
+    }
   }
 
   .description {
@@ -52,17 +66,15 @@ const Container = styled.article`
     padding: 0.8rem;
     background-color: #fff;
     &__name {
-      font-size: 1.2rem;
       font-weight: 500;
+      &:hover {
+        cursor: pointer;
+        text-decoration: underline;
+      }
     }
     &__price {
       font-size: 1.1rem;
       font-weight: 500;
-    }
-    &__price-old {
-      font-size: 1.1rem;
-      font-weight: lighter;
-      text-decoration: line-through;
     }
   }
 
@@ -77,7 +89,8 @@ const Container = styled.article`
     position: absolute;
     top: 0;
     right: 0;
-    padding: 1rem;
+    padding: 0.5rem;
+    font-size: 0.7rem;
     background-color: #008ecc;
     color: #fff;
     font-weight: 500;
