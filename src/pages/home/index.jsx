@@ -1,3 +1,14 @@
+import { useState } from "react";
+import { Categories } from "../../components";
+import { Products } from "../../components/Products";
+
 export const Home = () => {
-  return <div>Inicio</div>;
+  const [category, setCategory] = useState("all");
+
+  return (
+    <>
+      <Categories onSetCategory={setCategory} />
+      <Products />
+    </>
+  );
 };
