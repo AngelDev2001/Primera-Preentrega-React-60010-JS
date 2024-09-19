@@ -1,18 +1,18 @@
 import { Button, Divider, Space } from "antd";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { useProductsCart } from "../../providers/ProductsCart";
+import { useProductsCart } from "../../providers/ProductsCartProvider";
 
-export const Product = ({ id, image, name, price }) => {
+export const Product = ({ product }) => {
   const navigate = useNavigate();
   const { onAddProductCart } = useProductsCart();
 
-  const onNavigateProductDetails = () => navigate(`/products/${id}`);
+  const onNavigateProductDetails = () => navigate(`/products/${product.id}`);
 
   return (
     <Container>
       <div className="image-container" onClick={onNavigateProductDetails}>
-        <img src={image} alt="" />
+        <img src={product.image} alt="" />
       </div>
       <div className="description">
         <Space direction="vertical">
@@ -20,12 +20,12 @@ export const Product = ({ id, image, name, price }) => {
             className="description__name"
             onClick={onNavigateProductDetails}
           >
-            {name}
+            {product.name}
           </span>
-          <span className="description__price">S/ {price}</span>
+          <span className="description__price">S/ {product.price}</span>
         </Space>
         <Divider style={{ margin: "1rem 0" }} />
-        <Button type="link" block onClick={() => onAddProductCart(id)}>
+        <Button type="link" block onClick={() => onAddProductCart(product)}>
           Agregar al carrito
         </Button>
       </div>

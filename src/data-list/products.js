@@ -17,7 +17,6 @@ export const products = [
     brand: "apple",
     image: Cellphone1,
     description: "Celular Apple Iphone 15 Pro Max 256GB Titanio Azul",
-    quantity: 20,
     price: 50,
     discount: 0.5,
     category: "cellphones",
@@ -29,7 +28,6 @@ export const products = [
     image: Cellphone2,
     description:
       "Conoce el Galaxy A55 5G. La serie Galaxy A simple pero mejorada viene en un diseño icónico con un diseño de 3cámaras en un diseño de marco plano de metal para un agarre fácil e intuitivo. Además, está construido con Corning® Gorilla® Glass Victus®+, lo que lo hace más duro y resistente a los daños.",
-    quantity: 20,
     price: 60,
     discount: 0.5,
     category: "cellphones",
@@ -41,7 +39,6 @@ export const products = [
     image: Cellphone3,
     description:
       "Descubre Redmi note 13 midnight black 8gb ram 256gb rom al mejor precio. Compra con Ofertas y Descuentos.",
-    quantity: 20,
     price: 70,
     discount: 0.5,
     category: "cellphones",
@@ -53,7 +50,6 @@ export const products = [
     image: Watch1,
     description:
       "Dura hasta 13 días con una sola carga. Se sienta ligeramente en la muñeca, haciendo un seguimiento de más de 100ejercicios y actividades diarias, incluido el sueño. Te permite reproducir música, revisar llamadas y enviar mensajes de texto directamente desde tu muñeca: mantente empoderado, conectado y en camino sin esfuerzo con el Galaxy Fit3.",
-    quantity: 20,
     price: 80,
     discount: 0.5,
     category: "watches",
@@ -65,7 +61,6 @@ export const products = [
     image: Watch2,
     description:
       "Apple Watch Series 9 GPS - Caja de aluminio medianoche 41 mm - Correa deportiva medianoche - Talla S/M. Descubre Apple watch series 9 gps - caja de aluminio medianoche 41 mm - correa deportiva medianoche - talla s/m al mejor precio. Compra con Ofertas y Descuentos.",
-    quantity: 20,
     price: 90,
     discount: 0.5,
     category: "watches",
@@ -77,7 +72,6 @@ export const products = [
     image: Watch3,
     description:
       "Apple Watch Series 9 GPS - Caja de aluminio plata 41 mm - Correa deportiva azul tempestad - Talla S/M. Descubre Apple watch series 9 gps - caja de aluminio plata 41 mm - correa deportiva azul tempestad - talla s/m al mejor precio. Compra con Ofertas y Descuentos.",
-    quantity: 20,
     price: 100,
     discount: 0.5,
     category: "watches",
@@ -89,7 +83,6 @@ export const products = [
     image: Laptop1,
     description:
       "Portátil Smart, fino, ligero y de grado militar de 40,64 cm (16″)Equipado con procesadores Intel® Core™ de 13.a generaciónCapacidad de respuesta del ordenador en tiempo real a través de Lenovo AI EngineLector de huellas dactilares opcional y cámara FHD híbrida con infrarrojosFunciones mejoradas para ahorrarte tiempo y proteger tus datosSelección de excelentes pantallas, certificación Dolby Audio™",
-    quantity: 110,
     price: 50,
     discount: 0.5,
     category: "laptops",
@@ -101,7 +94,6 @@ export const products = [
     image: Laptop2,
     description:
       "Laptop panorámica de 15″ equipado con procesadores Intel® Core™ de hasta 13.a generaciónLa configuración te permite optimizar el rendimiento, prolongar la duración de la batería y mantener el sistema más ventiladoGracias a la tecnología de carga rápida, puedes trabajar más tiempo sin enchufarloInicio de sesión y arranque instantáneos con botón de encendido opcional activado por lector de huellas dactilaresFantástico para las videollamadas: cámara web con obturador de privacidad, Dolby Audio™ y cancelación de ruidoLa retroiluminación del teclado y algunos puertos/ranuras pueden ser opcionales o variar; colores sujetos a disponibilidad",
-    quantity: 120,
     price: 50,
     discount: 0.5,
     category: "laptops",
@@ -113,7 +105,6 @@ export const products = [
     image: Laptop3,
     description:
       "Laptop panorámica de 15″ equipado con procesadores Intel® Core™La configuración te permite optimizar el rendimiento, prolongar la duración de la batería y mantener el sistema más ventiladoGracias a la tecnología de carga rápida, puedes trabajar más tiempo sin enchufarloFantástico para las videollamadas: cámara web con obturador de privacidad, Dolby Audio™ y cancelación de ruidoLa retroiluminación del teclado y algunos puertos/ranuras pueden ser opcionales o variar; colores sujetos a disponibilidad",
-    quantity: 130,
     price: 50,
     discount: 0.5,
     category: "laptops",

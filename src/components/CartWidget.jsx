@@ -1,7 +1,10 @@
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useProductsCart } from "../providers/ProductsCartProvider";
 
 export const CardWidgget = ({ onSetOpenDrawer }) => {
+  const { cartLength } = useProductsCart();
+
   return (
     <div className="icon-cart">
       <div className="icon-cart-shopping">
@@ -11,7 +14,7 @@ export const CardWidgget = ({ onSetOpenDrawer }) => {
           onClick={() => onSetOpenDrawer(true)}
         />
       </div>
-      <span>1</span>
+      <span>{cartLength}</span>
     </div>
   );
 };

@@ -6,18 +6,11 @@ export const Products = ({ category }) => {
   const productsView = products.filter((product) =>
     product.category === category ? true : category === "all" ? true : null
   );
-
   return (
     <Container>
       <div className="products-section">
         {productsView.map((product, index) => (
-          <Product
-            key={index}
-            id={product.id}
-            image={product.image}
-            name={product.name}
-            price={product.price}
-          />
+          <Product key={index} product={product} />
         ))}
       </div>
     </Container>

@@ -37,6 +37,7 @@ export const Router = () => {
           </BaseLayout>
         }
       />
+      <Route path="/cart" element={<BaseLayout>Hola</BaseLayout>} />
     </Routes>
   );
 };

@@ -1,19 +1,27 @@
 import { NavBar } from "./NavBar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Drawer, Input, Layout } from "antd";
+import { Button, Col, Drawer, Input, Layout, Row } from "antd";
 import "../../styles/header.css";
 import {
   faBarsStaggered,
   faCartShopping,
   faMagnifyingGlass,
 } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { CartProducts } from "../CartProducts";
+import styled from "styled-components";
+import { useProductsCart } from "../../providers/ProductsCartProvider";
 
 const { Header } = Layout;
 
 export const HeaderLayout = () => {
+  const navigate = useNavigate();
+  const { cart, totalPrice } = useProductsCart();
+
   const [openDrawer, setOpenDrawer] = useState(false);
+
+  const onNavigateCart = () => navigate("/cart");
 
   return (
     <Header>
@@ -42,9 +50,6 @@ export const HeaderLayout = () => {
               className="icon-magnifying-glass"
             />
           }
-          // suffix={
-          //   <FontAwesomeIcon icon={faList} size="lg" className="icon-list" />
-          // }
         />
       </div>
       <NavBar onSetOpenDrawer={setOpenDrawer} />
@@ -53,10 +58,40 @@ export const HeaderLayout = () => {
         onClose={() => setOpenDrawer(false)}
         open={openDrawer}
       >
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
+        <Row gutter={[16, 16]}>
+          <Col span={24}>
+            <CartProducts cart={cart} />
+          </Col>
+          <Col span={24}>
+            <WrapperDescription>
+              <div>
+                <span>Subtotal</span>
+                <span>S/ {totalPrice}</span>
+              </div>
+              <div>
+                <span>Total</span>
+                <span>S/ {totalPrice}</span>
+              </div>
+              <Button block onClick={() => onNavigateCart()}>
+                Finalizar mi compra
+              </Button>
+            </WrapperDescription>
+          </Col>
+        </Row>
       </Drawer>
     </Header>
   );
 };
+
+const WrapperDescription = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  div {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    font-weight: 500;
+  }
+`;
