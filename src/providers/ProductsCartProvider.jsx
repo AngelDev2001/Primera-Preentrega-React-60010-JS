@@ -3,6 +3,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 const ProductsContext = createContext({
   cart: [],
   cartLength: null,
+  productsQuantity: null,
   totalPrice: null,
   onIncreaseQuantity: (product) => console.info(product),
   onDecreaseQuantity: (product) => console.info(product),
@@ -71,6 +72,11 @@ export const ProductsCartProvider = ({ children }) => {
 
   const cartLength = cart.length;
 
+  const productsQuantity = cart.reduce(
+    (acc, product) => acc + product?.quantity,
+    0
+  );
+
   const totalPrice = cart.reduce(
     (acc, product) => acc + product?.price * product?.quantity,
     0
@@ -81,6 +87,7 @@ export const ProductsCartProvider = ({ children }) => {
       value={{
         cart,
         cartLength,
+        productsQuantity,
         totalPrice,
         onIncreaseQuantity,
         onDecreaseQuantity,
