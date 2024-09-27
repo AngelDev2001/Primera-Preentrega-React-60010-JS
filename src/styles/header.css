@@ -32,10 +32,10 @@ header {
       cursor: pointer;
     }
 
-    .icon-cart-shopping-top {
+    /* .icon-cart-shopping-top {
       color: #008ecc;
       cursor: pointer;
-    }
+    } */
   }
 
   .search-container {
@@ -56,34 +56,6 @@ header {
     .icon-list {
       color: #008ecc;
       cursor: pointer;
-    }
-  }
-
-  .icon-cart-shopping {
-    order: 3;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: #008ecc;
-    cursor: pointer;
-    display: none;
-  }
-
-  .icon-cart {
-    position: relative;
-    span {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 1rem;
-      height: 1rem;
-      border-radius: 50%;
-      position: absolute;
-      top: -0.8rem;
-      right: -0.8rem;
-      font-size: 0.7rem;
-      background-color: #000;
-      color: #fff;
     }
   }
 }

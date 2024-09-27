@@ -73,8 +73,15 @@ export const Cart = () => {
             Generar orden
           </Button>
         </div>
+        <div className="orders">
+          <span>Mis ordenes</span>
+          <div className="order">
+            <span>ASDHJKGVHFDGFHFGFDS</span>
+          </div>
+        </div>
       </div>
       <ModalGenerateOrder
+        cart={cart}
         visibleForm={visibleForm}
         onSetVisibleForm={setVisibleForm}
       />
@@ -84,14 +91,15 @@ export const Cart = () => {
 
 const WrapperContent = styled.section`
   display: flex;
+  flex-direction: column;
   justify-content: space-evenly;
+
+  @media screen and (min-width: 1024px) {
+    flex-direction: row;
+  }
 
   img {
     width: 6rem;
-  }
-
-  .products {
-    /* box-shadow: 0 0 1px 1px #f3ecec; */
   }
 
   .products-list {
@@ -126,6 +134,9 @@ const WrapperContent = styled.section`
 
   .summary {
     width: 25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
 
     h2 {
       font-weight: 500;
@@ -145,5 +156,11 @@ const WrapperContent = styled.section`
       justify-content: space-between;
       font-weight: 500;
     }
+  }
+
+  .orders {
+    padding: 1rem;
+    border-radius: 0.8rem;
+    box-shadow: 0 0 1px 1px #f3ecec;
   }
 `;

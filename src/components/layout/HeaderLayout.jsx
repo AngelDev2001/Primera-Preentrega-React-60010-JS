@@ -4,7 +4,6 @@ import { Button, Col, Drawer, Input, Layout, Row } from "antd";
 import "../../styles/header.css";
 import {
   faBarsStaggered,
-  faCartShopping,
   faMagnifyingGlass,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link, useNavigate } from "react-router-dom";
@@ -12,6 +11,7 @@ import { useState } from "react";
 import { CartProducts } from "../CartProducts";
 import styled from "styled-components";
 import { useProductsCart } from "../../providers/ProductsCartProvider";
+import { CardWidgget } from "../CartWidget";
 
 const { Header } = Layout;
 
@@ -32,11 +32,9 @@ export const HeaderLayout = () => {
         <Link to="/">
           <h1>MegaMall</h1>
         </Link>
-        <FontAwesomeIcon
-          icon={faCartShopping}
-          size="lg"
-          className="icon-cart-shopping-top"
-        />
+        <div className="icon-cart-shopping-top">
+          <CardWidgget onSetOpenDrawer={setOpenDrawer} />
+        </div>
       </div>
       <div className="search-container">
         <Input
@@ -72,7 +70,13 @@ export const HeaderLayout = () => {
                 <span>Total</span>
                 <span>S/ {totalPrice}</span>
               </div>
-              <Button block onClick={() => onNavigateCart()}>
+              <Button
+                block
+                onClick={() => {
+                  onNavigateCart();
+                  setOpenDrawer(false);
+                }}
+              >
                 Finalizar mi compra
               </Button>
             </WrapperDescription>
