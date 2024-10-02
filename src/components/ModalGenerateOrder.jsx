@@ -34,7 +34,11 @@ export const ModalGenerateOrder = ({ cart, visibleForm, onSetVisibleForm }) => {
 
       const docRef = doc(collection(db, "orders"));
 
+      localStorage.setItem("emailUser", formData.email);
+
       await setDoc(docRef, mapForm(formData, docRef.id));
+
+      localStorage.setItem("cart", JSON.stringify([]));
 
       onSetVisibleForm(false);
       openNotification("bottomLeft");

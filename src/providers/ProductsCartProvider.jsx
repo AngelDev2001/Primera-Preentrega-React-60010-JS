@@ -18,7 +18,7 @@ export const ProductsCartProvider = ({ children }) => {
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
-  }, [cart]);
+  }, [cart, cart.length]);
 
   const onAddProductCart = (product) => {
     const isExistsProduct = cart.some((_product) => _product.id === product.id);

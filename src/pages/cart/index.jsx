@@ -3,8 +3,10 @@ import { useProductsCart } from "../../providers/ProductsCartProvider";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ModalGenerateOrder } from "../../components/ModalGenerateOrder";
+import { collection, getDocs, query, where } from "firebase/firestore";
+import { db } from "../../firebase";
 
 export const Cart = () => {
   const {
@@ -16,6 +18,22 @@ export const Cart = () => {
   } = useProductsCart();
 
   const [visibleForm, setVisibleForm] = useState(false);
+  const [orders, setOrders] = useState([]);
+
+  const emailUser = localStorage.getItem("emailUser");
+
+  console.log("emailUser: ", emailUser);
+
+  useEffect(() => {
+    (async () => {
+      const _orders = await getDocs(
+        query(collection(db, "orders"), where("email", "==", emailUser))
+      );
+      setOrders(_orders.docs.map((doc) => doc.data()));
+    })();
+  }, [visibleForm, orders.length]);
+
+  console.log("orders: ", orders);
 
   return (
     <WrapperContent>
@@ -74,9 +92,15 @@ export const Cart = () => {
           </Button>
         </div>
         <div className="orders">
-          <span>Mis ordenes</span>
-          <div className="order">
-            <span>ASDHJKGVHFDGFHFGFDS</span>
+          <span className="orders-title">Mis ordenes</span>
+          <div className="order-content">
+            {orders.map((order) => (
+              <div key={order.id}>
+                <span>
+                  Código: <strong>{order.id}</strong>
+                </span>
+              </div>
+            ))}
           </div>
         </div>
       </div>
@@ -159,8 +183,30 @@ const WrapperContent = styled.section`
   }
 
   .orders {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
     padding: 1rem;
     border-radius: 0.8rem;
     box-shadow: 0 0 1px 1px #f3ecec;
+
+    .orders-title {
+      font-weight: 500;
+    }
+
+    .order-content {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+
+      & > div {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+        border-radius: 0.8rem;
+        box-shadow: 0 0 1px 1px #f3ecec;
+      }
+    }
   }
 `;
