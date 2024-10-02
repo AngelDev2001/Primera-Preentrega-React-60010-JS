@@ -1,12 +1,16 @@
 import { useParams } from "react-router-dom";
-import { products } from "../../data-list";
 import styled from "styled-components";
 import { Button } from "antd";
+import { useProductsCart } from "../../providers/ProductsCartProvider";
 
 export const Details = () => {
   const { productId } = useParams();
 
-  const product = products.find((_product) => _product.id === productId);
+  const { products } = useProductsCart();
+
+  const product = (products || []).find(
+    (_product) => _product.id === productId
+  );
 
   return (
     <Container>

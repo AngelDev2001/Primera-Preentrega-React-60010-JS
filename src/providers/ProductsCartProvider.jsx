@@ -1,7 +1,10 @@
+import { collection, getDocs, onSnapshot } from "firebase/firestore";
 import { createContext, useContext, useEffect, useState } from "react";
+import { db } from "../firebase";
 
 const ProductsContext = createContext({
   cart: [],
+  products: [],
   cartLength: null,
   productsQuantity: null,
   totalPrice: null,
@@ -16,9 +19,23 @@ export const ProductsCartProvider = ({ children }) => {
     JSON.parse(localStorage.getItem("cart")) || []
   );
 
+  const [products, setProducts] = useState([]);
+
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart, cart.length]);
+
+  useEffect(() => {
+    onSnapshot(collection(db, "items"), (snapShot) => {
+      const _products = [];
+
+      snapShot.forEach((doc) => _products.push(doc.data()));
+
+      setProducts(_products);
+    });
+  }, []);
+
+  console.log("products: ", products);
 
   const onAddProductCart = (product) => {
     const isExistsProduct = cart.some((_product) => _product.id === product.id);
@@ -86,6 +103,7 @@ export const ProductsCartProvider = ({ children }) => {
     <ProductsContext.Provider
       value={{
         cart,
+        products,
         cartLength,
         productsQuantity,
         totalPrice,

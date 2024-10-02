@@ -1,8 +1,7 @@
 import styled from "styled-components";
 import { Product } from "./ui/Product";
-import { products } from "../data-list/products";
 
-export const Products = ({ category }) => {
+export const Products = ({ category, products }) => {
   const productsView = products.filter((product) =>
     product.category === category ? true : category === "all" ? true : null
   );

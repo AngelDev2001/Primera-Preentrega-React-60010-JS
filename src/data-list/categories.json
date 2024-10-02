@@ -5,14 +5,14 @@
   },
   {
     "title": "Celulares",
-    "code": "cellphones"
+    "code": "cellphone"
   },
   {
     "title": "Relojes",
-    "code": "watches"
+    "code": "watch"
   },
   {
     "title": "Laptops",
-    "code": "laptops"
+    "code": "laptop"
   }
 ]

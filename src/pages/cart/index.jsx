@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { ModalGenerateOrder } from "../../components/ModalGenerateOrder";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "../../firebase";
+import { ModalNewProduct } from "../../components/ModalNewProduct";
 
 export const Cart = () => {
   const {
@@ -18,6 +19,7 @@ export const Cart = () => {
   } = useProductsCart();
 
   const [visibleForm, setVisibleForm] = useState(false);
+  const [visibleFormProduct, setVisibleFormProduct] = useState(false);
   const [orders, setOrders] = useState([]);
 
   const emailUser = localStorage.getItem("emailUser");
@@ -32,8 +34,6 @@ export const Cart = () => {
       setOrders(_orders.docs.map((doc) => doc.data()));
     })();
   }, [visibleForm, orders.length]);
-
-  console.log("orders: ", orders);
 
   return (
     <WrapperContent>
@@ -90,6 +90,9 @@ export const Cart = () => {
           <Button block onClick={() => setVisibleForm(true)}>
             Generar orden
           </Button>
+          <Button block onClick={() => setVisibleFormProduct(true)}>
+            Agregar Producto
+          </Button>
         </div>
         <div className="orders">
           <span className="orders-title">Mis ordenes</span>
@@ -108,6 +111,11 @@ export const Cart = () => {
         cart={cart}
         visibleForm={visibleForm}
         onSetVisibleForm={setVisibleForm}
+      />
+
+      <ModalNewProduct
+        visibleForm={visibleFormProduct}
+        onSetVisibleForm={setVisibleFormProduct}
       />
     </WrapperContent>
   );
